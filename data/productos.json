@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "nombre": "Paleta de Contorno",
+    "precio": 113.10,
+    "imagen": "/img/paleta.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Rímel Biocosmetic",
+    "precio": 23.00,
+    "imagen": "/img/rimel.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Producto sin imagen",
+    "precio": 50.00
+  }
+]

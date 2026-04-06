@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- RESPONSIVE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Catálogo Cosméticos</title>
+
+  <!-- 🔥 ICONO (FAVICON) -->
+  <link rel="icon" href="/img/logo.png">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <h1>🌸 Catálogo Cosméticos</h1>
+  <input type="text" id="busqueda" placeholder="¿Qué estás buscando?">
+</header>
+
+<main>
+  <div id="productos" class="grid"></div>
+</main>
+
+<!-- BOTÓN FLOTANTE -->
+<button class="btn-carrito" onclick="toggleCarrito()">
+  🛒 <span id="contador">0</span>
+</button>
+
+<!-- PANEL CARRITO -->
+<div id="carritoPanel" class="carrito-panel">
+  <div class="carrito-header">
+    <h3>🛒 Carrito</h3>
+    <button onclick="toggleCarrito()">✖</button>
+  </div>
+
+  <ul id="carrito"></ul>
+  <p id="total">Total: $0</p>
+
+  <button onclick="enviarWhatsApp()">Comprar</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
