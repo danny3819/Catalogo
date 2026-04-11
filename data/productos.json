@@ -9,5 +9,8 @@
 {"id": 8, "nombre": "Perfume Arabe Gentle 6ml", "precio": 250.00, "imagen":"/img/8.webp"},
 {"id": 9, "nombre": "Perfume Arabe Blue Alrehab 6ml", "precio": 250.00, "imagen":"/img/9.webp"},
 {"id": 10, "nombre": "Perfume Arabe Ambassador 6ml", "precio": 250.00, "imagen":"/img/10.webp"},
-{"id": 11, "nombre": "Perfume Arabe Clever Man 6ml", "precio": 250.00, "imagen":"/img/11.webp"}
+{"id": 11, "nombre": "Perfume Arabe Clever Man 6ml", "precio": 250.00, "imagen":"/img/11.webp"},
+{"id": 12, "nombre": "Labial Bissu Venecia 22", "precio": 60.00, "imagen":"/img/12.webp"},
+{"id": 13, "nombre": "Labial Bissu, Bernal 22", "precio": 60.00, "imagen":"/img/13.webp"},
+
 ]
