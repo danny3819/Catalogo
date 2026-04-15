@@ -16,7 +16,7 @@
 <body>
 
 <header>
-  <h1>🌸 Catálogo Cosméticos</h1>
+  <h1><span><img src="/img/logo.png" alt="logo" width="30" style="border-radius: 50px;"></span> Catálogo Cosméticos</h1>
   <input type="text" id="busqueda" placeholder="¿Qué estás buscando?">
 </header>
 
@@ -41,6 +41,12 @@
 
   <button onclick="enviarWhatsApp()">Comprar</button>
 </div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="cerrarModal()">
+  <span class="cerrar">&times;</span>
+  <img id="imgModal" class="modal-contenido">
+</div> 
 
 <script src="app.js"></script>
 </body>

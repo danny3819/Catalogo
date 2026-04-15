@@ -39,7 +39,7 @@ main {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 15px;
+  gap: 18px;
   padding: 15px;
 }
 
@@ -59,14 +59,19 @@ main {
 }
 
 .card h4 {
-  font-size: 14px;
-  margin: 8px 0 4px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: 16px;
   color: #e91e63;
   font-weight: bold;
+}
+
+.card button {
+  font-size: 14px;
+  padding: 10px;
 }
 
 /* BOTONES GENERALES */
@@ -80,6 +85,22 @@ button {
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 /* BOTÓN FLOTANTE */
@@ -205,8 +226,12 @@ button {
   }
 
   .card img {
-    height: 180px;
-  }
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.08);
+}
 
   .carrito-panel {
     left: auto;
@@ -230,4 +255,56 @@ button {
   .btn-carrito {
     bottom: 80px;
   }
+}
+
+/* ANIMACIÓN ENTRADA */
+.card {
+  animation: aparecer 0.4s ease;
+  padding: 12px;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HOVER */
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+}
+
+.modal-contenido {
+  display: block;
+  margin: 60px auto;
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
 }

@@ -17,8 +17,11 @@ function mostrar(productos) {
   productos.forEach(p => {
     contenedor.innerHTML += `
       <div class="card">
-        <img src="${p.imagen || '/img/logo.png'}" 
-             onerror="this.src='/img/logo.png'">
+        <img 
+          src="${p.imagen || '/img/logo.png'}"
+          onerror="this.src='/img/logo.png'"
+          onclick="abrirModal('${p.imagen || '/img/logo.png'}')">
+
         <h4>${p.nombre}</h4>
         <p>$${p.precio}</p>
         <button onclick="agregarCarrito(${p.id})">Agregar 🛒</button>
@@ -40,6 +43,26 @@ function agregarCarrito(id) {
   }
 
   actualizarCarrito();
+  alertaAgregado(producto.nombre);
+}
+
+function alertaAgregado(nombre) {
+  const div = document.createElement("div");
+  div.innerText = "✔ Agregado: " + nombre;
+
+  div.style.position = "fixed";
+  div.style.bottom = "100px";
+  div.style.left = "50%";
+  div.style.transform = "translateX(-50%)";
+  div.style.background = "#4caf50";
+  div.style.color = "white";
+  div.style.padding = "10px 15px";
+  div.style.borderRadius = "10px";
+  div.style.zIndex = "2000";
+
+  document.body.appendChild(div);
+
+  setTimeout(() => div.remove(), 2000);
 }
 
 // actualizar carrito
@@ -109,7 +132,7 @@ function enviarWhatsApp() {
     mensaje += `${p.nombre} x${p.cantidad}\n`;
   });
 
-  const numero = "523333542591"; // CAMBIA
+  const numero = "523321936637"; // CAMBIA
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
@@ -133,3 +156,16 @@ document.getElementById('busqueda').addEventListener('input', e => {
 
   mostrar(filtrados);
 });
+
+// Modal
+function abrirModal(src) {
+  const modal = document.getElementById("modal");
+  const img = document.getElementById("imgModal");
+
+  img.src = src;
+  modal.style.display = "block";
+}
+
+function cerrarModal() {
+  document.getElementById("modal").style.display = "none";
+}
