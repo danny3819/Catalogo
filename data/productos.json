@@ -11,5 +11,30 @@
 {"id": 10, "nombre": "Perfume Arabe Ambassador 6ml", "precio": 250.00, "imagen":"/img/10.webp"},
 {"id": 11, "nombre": "Perfume Arabe Clever Man 6ml", "precio": 250.00, "imagen":"/img/11.webp"},
 {"id": 12, "nombre": "Labial Bissu Venecia 22", "precio": 60.00, "imagen":"/img/12.webp"},
-{"id": 13, "nombre": "Labial Bissu, Bernal 22", "precio": 60.00, "imagen":"/img/13.webp"}
+{"id": 13, "nombre": "Labial Bissu, Bernal 22", "precio": 60.00, "imagen":"/img/13.webp"},
+{"id": 14, "nombre": "Perfume De Caballero, Robot Home City, 30 Ml", "precio":60.00 , "imagen":"/img/14.webp"},
+{"id": 15, "nombre": "Perfume De Dama Onlyou N.844, 30ml", "precio":50.00 , "imagen":"/img/15.webp"},
+{"id": 16, "nombre": "Perfume De Dama 0 Only You 30ml", "precio":60.00 , "imagen":"/img/16.webp"},
+{"id": 17, "nombre": "Perfume De Caballero Onlyou N837 30ml", "precio":60 , "imagen":"/img/17.webp"},
+{"id": 18, "nombre": "Perfume De Caballero 30ml Onlyou", "precio":60.00 , "imagen":"/img/18.webp"},
+{"id": 19, "nombre": "Perfume de caballero onlyou 30mL n.862", "precio":60.00 , "imagen":"/img/19.webp"},
+
+{"id": 20, "nombre": " Perfume De Dama , Onlyou 30ml", "precio": 60.00, "imagen":"/img/20.webp"},
+{"id": 21, "nombre": "Lápiz De Ceja", "precio":35.00 , "imagen":"/img/21.webp"},
+{"id": 22, "nombre": "Labial Nude", "precio":20.00 , "imagen":"/img/22.webp"},
+{"id": 23, "nombre": "Pestañas", "precio":20.00 , "imagen":"/img/23.webp"},
+{"id": 24, "nombre": "Mascarilla Con Colágeno", "precio":60.00 , "imagen":"/img/24.webp"},
+{"id": 25, "nombre": "Perfume De Dama Black X 5, 35ml", "precio":40.00  , "imagen":"/img/25.webp"},
+{"id": 26, "nombre": "Perfume De Dama Is, 35ml", "precio":40.00 , "imagen":"/img/26.webp"},
+{"id": 27, "nombre": "Perfume Aí De Dama, 35ml", "precio":40.00 , "imagen":"/img/27.webp"},
+{"id": 28, "nombre": "Perfume De Dama Veroage, 35ml", "precio":40.00 , "imagen":"/img/28.webp"},
+{"id": 29, "nombre": "Perfume Rogth Blue , 35ml", "precio":40.00 , "imagen":"/img/29.webp"},
+{"id": 30, "nombre": "Perfume De Caballero, Capital Blaze, 35ml", "precio":40.00 , "imagen":"/img/30.webp"},
+
+{"id": 31, "nombre": "Paleta De Sombras Badbunny", "precio":120.00 , "imagen":"/img/31.webp"},
+{"id": 32, "nombre": "Paleta De Sombras Yuexinbeauty", "precio":100.00 , "imagen":"/img/32.webp"},
+{"id": 33, "nombre": "Esponjas De Maquillaje", "precio":10.00 , "imagen":"/img/33.webp"},
+{"id": 34, "nombre": "Sombras De Bolsillo", "precio":30.00 , "imagen":"/img/34.webp"},
+{"id": 35, "nombre": "Espejo", "precio":40.00 , "imagen":"/img/35.webp"},
+{"id": 36, "nombre": "Cera De Ceja", "precio":25.00 , "imagen":"/img/36.webp"}
 ]
