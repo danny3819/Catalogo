@@ -37,7 +37,7 @@
 {"id": 33, "nombre": "Esponjas De Maquillaje", "precio":10.00 , "imagen":"/img/33.webp"},
 {"id": 34, "nombre": "Sombras De Bolsillo", "precio":30.00 , "imagen":"/img/34.webp"},
 {"id": 35, "nombre": "Espejo", "precio":40.00 , "imagen":"/img/35.webp"},
-{"id": 36, "nombre": "Cera De Ceja", "precio":25.00 , "imagen":"/img/36.webp"}
+{"id": 36, "nombre": "Cera De Ceja", "precio":25.00 , "imagen":"/img/36.webp"},
 {"id": 37, "nombre": "Sombras Ariel", "precio":150.00 , "imagen":"/img/37.webp"},
 {"id": 38, "nombre": "Set de Labial Villanas", "precio":390.00 , "imagen":"/img/38.webp"},
 {"id": 39, "nombre": "Sombras Blanca Nieves", "precio":150.00 , "imagen":"/img/39.webp"},
