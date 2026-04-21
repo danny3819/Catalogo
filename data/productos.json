@@ -9,6 +9,7 @@
 {"id": 8, "nombre": "Perfume Arabe Gentle 6ml", "precio": 250.00, "imagen":"/img/8.webp"},
 {"id": 9, "nombre": "Perfume Arabe Blue Alrehab 6ml", "precio": 250.00, "imagen":"/img/9.webp"},
 {"id": 10, "nombre": "Perfume Arabe Ambassador 6ml", "precio": 250.00, "imagen":"/img/10.webp"},
+
 {"id": 11, "nombre": "Perfume Arabe Clever Man 6ml", "precio": 250.00, "imagen":"/img/11.webp"},
 {"id": 12, "nombre": "Labial Bissu Venecia 22", "precio": 60.00, "imagen":"/img/12.webp"},
 {"id": 13, "nombre": "Labial Bissu, Bernal 22", "precio": 60.00, "imagen":"/img/13.webp"},
@@ -37,4 +38,18 @@
 {"id": 34, "nombre": "Sombras De Bolsillo", "precio":30.00 , "imagen":"/img/34.webp"},
 {"id": 35, "nombre": "Espejo", "precio":40.00 , "imagen":"/img/35.webp"},
 {"id": 36, "nombre": "Cera De Ceja", "precio":25.00 , "imagen":"/img/36.webp"}
+{"id": 37, "nombre": "Sombras Ariel", "precio":150.00 , "imagen":"/img/37.webp"},
+{"id": 38, "nombre": "Set de Labial Villanas", "precio":390.00 , "imagen":"/img/38.webp"},
+{"id": 39, "nombre": "Sombras Blanca Nieves", "precio":150.00 , "imagen":"/img/39.webp"},
+{"id": 40, "nombre": "Sombras Cenicienta", "precio":150.00 , "imagen":"/img/40.webp"},
+
+{"id": 41, "nombre": "Loción Con Glitter Y Crema Campanita", "precio":280.00 , "imagen":"/img/41.webp"},
+{"id": 42, "nombre": "Loción Con Glitter Y Crema Alicia", "precio":280.00 , "imagen":"/img/42.webp"},
+{"id": 43, "nombre": "Espejo Alicia", "precio":140.00 , "imagen":"/img/43.webp"},
+{"id": 44, "nombre": "Set De Labiales Princesas", "precio":320.00 , "imagen":"/img/44.webp"},
+{"id": 45, "nombre": "Sombras Castillo Disney", "precio":330.00 , "imagen":"/img/45.webp"},
+{"id": 46, "nombre": "Fijador Maquillaje Cadáver De La Novia", "precio":438.00 , "imagen":"/img/46.webp"},
+{"id": 47, "nombre": "Risador De Pestañas Minnie", "precio":70.00 , "imagen":"/img/47.webp"},
+{"id": 48, "nombre": "Set De Loción Con Glitter Villanas", "precio":350.00 , "imagen":"/img/48.webp"},
+{"id": 49, "nombre": "Set De Loción Con Glitter Princesas", "precio":350.00 , "imagen":"/img/49.webp"}
 ]
