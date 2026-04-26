@@ -36,7 +36,13 @@ app.use((req, res, next) => {
 
 // Funciones JSON
 function leerProductos() {
-  return JSON.parse(fs.readFileSync(DATA));
+  try {
+    const data = fs.readFileSync(DATA, "utf-8");
+    return JSON.parse(data);
+  } catch (err) {
+    console.error("Error leyendo JSON:", err);
+    return [];
+  }
 }
 
 function guardarProductos(data) {
@@ -52,6 +58,17 @@ function auth(req, res, next) {
 }
 
 // ================= ROUTES =================
+
+// 🔥 API PRODUCTOS (LO QUE TE FALTABA)
+app.get("/api/productos", (req, res) => {
+  try {
+    const productos = leerProductos().filter(p => p.activo === true);
+    res.json(productos);
+  } catch (err) {
+    console.error("Error API:", err);
+    res.status(500).json([]);
+  }
+});
 
 // Home
 app.get("/", (req, res) => {
