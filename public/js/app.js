@@ -1,66 +1,125 @@
 let productosGlobal = [];
+let productosOriginales = [];
 let carrito = [];
-let tel = "523321936637"
+let tel = "523321936637";
 
-// cargar productos
+let pagina = 0;
+const limite = 8;
+
+// ================= FETCH =================
 fetch('/api/productos')
   .then(res => res.json())
   .then(data => {
     productosGlobal = data;
-    mostrar(data);
+    productosOriginales = data;
 
-     generarCategorias(); // 👈 IMPORTANTE
+    generarCategorias();
+
+    resetVista(); // 👈 IMPORTANTE
   });
 
-// mostrar productos
-function mostrar(productos) {
+// ================= RESET VISTA =================
+function resetVista() {
+  pagina = 0;
+  document.getElementById('productos').innerHTML = "";
+
+  cargarMas();
+
+  setTimeout(() => {
+    llenarPantalla(); // 👈 🔥 clave para PC
+  }, 100);
+}
+
+// ================= RENDER =================
+function renderAppend(productos) {
   const contenedor = document.getElementById('productos');
-  contenedor.innerHTML = '';
+  const fragment = document.createDocumentFragment();
 
   productos.forEach(p => {
-    contenedor.innerHTML += `
-      <div class="col-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
+    const div = document.createElement("div");
+    div.className = "col-6 col-md-4 col-lg-3";
 
-          <img src="${p.imagen || '/img/logo.png'}"
-               class="card-img-top"
-               style="height:180px;object-fit:cover;cursor:pointer"
-               onclick="verImagen('${p.imagen || '/img/logo.png'}')">
+    div.innerHTML = `
+      <div class="card h-100">
 
-          <div class="card-body d-flex flex-column">
-            <h6 class="card-title">${p.nombre}</h6>
-            <p class="text-danger fw-bold">$${p.precio}</p>
+        <img src="${p.imagen}"
+             class="card-img-top"
+             style="cursor:pointer"
+             onclick="verImagen('${p.imagen}')">
 
-            <button class="btn btn-danger mt-auto"
-                    onclick="agregarCarrito(${p.id})">
-              Agregar 🛒
-            </button>
-          </div>
+        <div class="card-body d-flex flex-column">
+          <h6>${p.nombre}</h6>
+          <p>$${p.precio}</p>
 
+          <button class="btn btn-danger mt-auto"
+                  onclick="agregarCarrito(${p.id})">
+            Agregar 🛒
+          </button>
         </div>
+
       </div>
     `;
+
+    fragment.appendChild(div);
   });
+
+  contenedor.appendChild(fragment);
 }
 
-// modal imagen
+// ================= SCROLL PRO =================
+
+const sentinel = document.getElementById("sentinel");
+
+const observer = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    cargarMas();
+  }
+}, {
+  rootMargin: "300px"
+});
+
+if (sentinel) observer.observe(sentinel);
+
+// ================= CARGAR =================
+function cargarMas() {
+  const inicio = pagina * limite;
+  const fin = inicio + limite;
+
+  const nuevos = productosGlobal.slice(inicio, fin);
+
+  if (nuevos.length === 0) return;
+
+  renderAppend(nuevos);
+  pagina++;
+}
+
+// ================= 🔥 FIX DESKTOP =================
+function llenarPantalla() {
+  const contenedor = document.getElementById('productos');
+
+  while (contenedor.scrollHeight <= window.innerHeight) {
+    const antes = pagina;
+    cargarMas();
+
+    if (pagina === antes) break; // evita loop infinito
+  }
+}
+
+// ================= MODAL =================
 function verImagen(src) {
   document.getElementById("imgPreview").src = src;
-  const modal = new bootstrap.Modal(document.getElementById('imgModal'));
-  modal.show();
+  new bootstrap.Modal(document.getElementById('imgModal')).show();
 }
 
-// carrito
+// ================= CARRITO =================
 function agregarCarrito(id) {
-  const p = productosGlobal.find(x => x.id === id);
+  const p = productosOriginales.find(x => x.id === id);
   const existe = carrito.find(x => x.id === id);
 
   if (existe) existe.cantidad++;
   else carrito.push({ ...p, cantidad: 1 });
 
   actualizarCarrito();
-
-  // 👇 NOTIFICACIÓN
   mostrarNotificacion(p);
 }
 
@@ -103,7 +162,6 @@ function actualizarCarrito() {
     carrito.reduce((s,p)=>s+p.cantidad,0);
 }
 
-// controles
 function cambiarCantidad(id, n) {
   const p = carrito.find(x => x.id === id);
   if (!p) return;
@@ -119,7 +177,7 @@ function eliminar(id) {
   actualizarCarrito();
 }
 
-// WhatsApp
+// ================= WHATS =================
 function enviarWhatsApp() {
   let msg = "Pedido:\n";
 
@@ -127,72 +185,69 @@ function enviarWhatsApp() {
     msg += `${p.nombre} x${p.cantidad}\n`;
   });
 
-  window.open(
-    "https://wa.me/"+tel+"?text=" + encodeURIComponent(msg)
-  );
+  window.open("https://wa.me/" + tel + "?text=" + encodeURIComponent(msg));
 }
 
-// buscador
+// ================= BUSCADOR =================
 document.getElementById("busqueda")
 .addEventListener("input", e => {
   const txt = e.target.value.toLowerCase();
 
-  const filtrados = productosGlobal.filter(p =>
+  const filtrados = productosOriginales.filter(p =>
     p.nombre.toLowerCase().includes(txt)
   );
 
-  mostrar(filtrados);
+  productosGlobal = filtrados;
+
+  resetVista(); // 👈 🔥 clave
 });
 
+// ================= NOTIFICACIÓN =================
 function mostrarNotificacion(producto) {
   const contenedor = document.getElementById("notificaciones");
 
   const div = document.createElement("div");
-  div.className = "card shadow mb-2 border-0";
+  div.className = "card mb-2";
 
   div.innerHTML = `
     <div class="card-body p-2">
-
-      <div class="d-flex align-items-center">
-        <img src="${producto.imagen}" width="50" class="rounded me-2">
-
-        <div class="flex-grow-1">
-          <div class="fw-bold small">✔ Agregado</div>
-          <div class="small text-muted">${producto.nombre}</div>
-        </div>
-      </div>
-
+      ✔ ${producto.nombre}
       <div class="progress mt-2" style="height:4px;">
         <div class="progress-bar bg-success" style="width:100%"></div>
       </div>
-
     </div>
   `;
 
   contenedor.appendChild(div);
 
-  // barra de tiempo
   const barra = div.querySelector(".progress-bar");
 
   let tiempo = 100;
 
-  const intervalo = setInterval(() => {
+  const i = setInterval(() => {
     tiempo -= 2;
     barra.style.width = tiempo + "%";
 
     if (tiempo <= 0) {
-      clearInterval(intervalo);
+      clearInterval(i);
       div.remove();
     }
   }, 50);
 }
 
+// ================= CATEGORÍAS =================
 function generarCategorias() {
   const cont = document.getElementById("listaCategorias");
 
-  const categorias = [...new Set(productosGlobal.map(p => p.categoria))];
+  const categorias = [...new Set(productosOriginales.map(p => p.categoria))];
 
-  cont.innerHTML = "";
+  cont.innerHTML = `
+    <button class="btn btn-outline-primary w-100 mb-2"
+            onclick="resetCatalogo()"
+            data-bs-dismiss="offcanvas">
+      Todos
+    </button>
+  `;
 
   categorias.forEach(cat => {
     cont.innerHTML += `
@@ -204,9 +259,13 @@ function generarCategorias() {
     `;
   });
 }
-function filtrarCategoria(cat) {
-  if (cat === "all") return mostrar(productosGlobal);
 
-  const filtrados = productosGlobal.filter(p => p.categoria === cat);
-  mostrar(filtrados);
+function filtrarCategoria(cat) {
+  productosGlobal = productosOriginales.filter(p => p.categoria === cat);
+  resetVista();
+}
+
+function resetCatalogo() {
+  productosGlobal = productosOriginales;
+  resetVista();
 }
