@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Catálogo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<h1>Catálogo</h1>
+
+<% if (user) { %>
+  <a href="/admin">Admin</a>
+  <a href="/logout">Salir</a>
+<% } else { %>
+  <a href="/login">Login</a>
+<% } %>
+
+<div>
+  <% categorias.forEach(c => { %>
+    <button onclick="filtrar('<%= c %>')"><%= c %></button>
+  <% }) %>
+  <button onclick="filtrar('all')">Todos</button>
+</div>
+
+<div class="grid">
+  <% productos.forEach(p => { %>
+    <div class="card" data-cat="<%= p.categoria %>">
+      <img src="<%= p.imagen %>" />
+      <h3><%= p.nombre %></h3>
+      <p>$<%= p.precio %></p>
+    </div>
+  <% }) %>
+</div>
+
+<script>
+function filtrar(cat) {
+  document.querySelectorAll(".card").forEach(el => {
+    el.style.display =
+      cat === "all" || el.dataset.cat === cat ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>

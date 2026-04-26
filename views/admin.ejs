@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin</title>
+</head>
+<body>
+
+<h2>Panel Admin</h2>
+<a href="/logout">Cerrar sesión</a>
+
+<form method="POST" action="/admin/agregar">
+  <input name="nombre" placeholder="Nombre" required>
+  <input name="precio" placeholder="Precio" required>
+  <input name="imagen" placeholder="URL imagen">
+  <input name="categoria" placeholder="Categoría">
+  <button>Agregar</button>
+</form>
+
+<hr>
+
+<% productos.forEach(p => { %>
+  <div>
+    <b><%= p.nombre %></b> - $<%= p.precio %>
+
+    <form method="POST" action="/admin/editar/<%= p.id %>">
+      <input name="nombre" placeholder="Nuevo nombre">
+      <input name="precio" placeholder="Nuevo precio">
+      <button>Editar</button>
+    </form>
+
+    <a href="/admin/eliminar/<%= p.id %>">Eliminar</a>
+    <a href="/admin/toggle/<%= p.id %>">
+      <%= p.activo ? "Ocultar" : "Mostrar" %>
+    </a>
+  </div>
+<% }) %>
+
+</body>
+</html>
