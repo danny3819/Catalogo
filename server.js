@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const fs = require("fs");
 const session = require("express-session");
@@ -17,14 +18,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false, // true en producción con HTTPS
-    httpOnly: true,
-    sameSite: "lax"
+    secure: true, // true en producción con HTTPS
+    sameSite: "none"
   }
 }));
 
 // Variables
-const DATA = "./data/productos.json";
+const DATA = path.join(__dirname, "data", "productos.json");
 const ADMIN_USER = process.env.ADMIN_USER;
 const ADMIN_HASH = process.env.ADMIN_HASH;
 
