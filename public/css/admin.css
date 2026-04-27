@@ -1,0 +1,49 @@
+body{
+  background:linear-gradient(135deg,#1a1a2e,#16213e);
+  min-height:100vh;
+  font-family:'Segoe UI';
+}
+
+/* glass */
+.glass{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  color:white;
+}
+
+/* navbar */
+.navbar{
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* cards */
+.glass-card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.1);
+  overflow:hidden;
+  color:white;
+
+  transition:.3s;
+}
+
+.glass-card:hover{
+  transform:translateY(-5px) scale(1.02);
+}
+
+.glass-card img{
+  height:180px;
+  object-fit:cover;
+}
+
+/* botones */
+.btn{
+  border-radius:10px;
+}
+
+/* modal */
+.modal-content{
+  border-radius:16px;
+}

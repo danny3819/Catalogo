@@ -1,0 +1,168 @@
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* FONDO */
+body{
+  height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+    radial-gradient(circle at 5% 10%, #ff00cca4, transparent),
+    radial-gradient(circle at 80% 80%, #00eeff3d, transparent),
+    linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+
+  overflow:hidden;
+}
+
+/* CONTENEDOR */
+.login-container{
+  width:100%;
+  max-width:380px;
+  padding:20px;
+}
+
+/* TARJETA GLASS */
+.login-card{
+  position:relative;
+
+  padding:35px 25px;
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  box-shadow:
+    0 0 20px rgba(255,0,204,0.25),
+    0 0 60px rgba(0, 238, 255, 0.407),
+    inset 0 0 10px rgba(255,255,255,0.1);
+
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+
+  animation:fadeIn .6s ease;
+}
+
+/* TITULO */
+h2{
+  text-align:center;
+  color:white;
+  text-shadow:0 0 10px #ff00cc;
+}
+
+/* INPUTS */
+.input-group{
+  position:relative;
+}
+
+.input-group input{
+  width:100%;
+  padding:12px;
+
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.2);
+
+  background:rgba(255,255,255,0.1);
+  color:white;
+
+  outline:none;
+}
+
+.input-group input:focus{
+  border:1px solid #00f0ff;
+
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #00f0ff44;
+}
+
+/* LABEL */
+.input-group label{
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#ccc;
+  transition:.2s;
+  pointer-events:none;
+}
+
+.input-group.active label{
+  top:-8px;
+  font-size:12px;
+  color:#ff00cc;
+}
+
+/* BOTÓN */
+button{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+
+  background:linear-gradient(135deg,#ff00cc,#3333ff);
+  color:white;
+
+  font-weight:bold;
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+button:hover{
+  transform:scale(1.05);
+
+  box-shadow:
+    0 0 20px #ff00cc,
+    0 0 40px #3333ff;
+}
+
+/* ERROR */
+.error{
+  background:rgba(255,0,0,0.2);
+  color:#ff4d4d;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  font-size:14px;
+
+  box-shadow:0 0 10px rgba(255,0,0,0.4);
+}
+
+/* LOADER */
+.loader{
+  display:inline-block;
+  width:14px;
+  height:14px;
+  border:2px solid white;
+  border-top:2px solid transparent;
+  border-radius:50%;
+  margin-right:6px;
+  animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+  to{ transform:rotate(360deg); }
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}

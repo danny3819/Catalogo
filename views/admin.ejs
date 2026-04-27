@@ -1,39 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
   <title>Admin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
+
 <body>
 
-<h2>Panel Admin</h2>
-<a href="/logout">Cerrar sesión</a>
+<!-- NAV -->
+<nav class="navbar glass px-3">
+  <h5 class="text-white">Panel Admin</h5>
 
-<form method="POST" action="/admin/agregar">
-  <input name="nombre" placeholder="Nombre" required>
-  <input name="precio" placeholder="Precio" required>
-  <input name="imagen" placeholder="URL imagen">
-  <input name="categoria" placeholder="Categoría">
-  <button>Agregar</button>
-</form>
-
-<hr>
-
-<% productos.forEach(p => { %>
   <div>
-    <b><%= p.nombre %></b> - $<%= p.precio %>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">
+      + Agregar
+    </button>
 
-    <form method="POST" action="/admin/editar/<%= p.id %>">
-      <input name="nombre" placeholder="Nuevo nombre">
-      <input name="precio" placeholder="Nuevo precio">
-      <button>Editar</button>
-    </form>
-
-    <a href="/admin/eliminar/<%= p.id %>">Eliminar</a>
-    <a href="/admin/toggle/<%= p.id %>">
-      <%= p.activo ? "Ocultar" : "Mostrar" %>
-    </a>
+    <a href="/logout" class="btn btn-danger">Salir</a>
   </div>
-<% }) %>
+</nav>
+
+<!-- LISTA -->
+<div class="container mt-4">
+  <div class="row g-3">
+
+    <% productos.forEach(p => { %>
+      <div class="col-6 col-md-4 col-lg-3">
+
+        <div class="card glass-card h-100">
+
+          <img src="<%= p.imagen %>" class="card-img-top">
+
+          <div class="card-body">
+
+            <h6><%= p.nombre %></h6>
+            <p>$<%= p.precio %></p>
+
+            <span class="badge <%= p.activo ? 'bg-success' : 'bg-secondary' %>">
+              <%= p.activo ? 'Activo' : 'Inactivo' %>
+            </span>
+
+            <div class="mt-2 d-flex gap-2">
+
+              <button class="btn btn-warning btn-sm w-100"
+                onclick="abrirEditar(this)"
+                data-id="<%= p.id %>"
+                data-nombre="<%= p.nombre %>"
+                data-precio="<%= p.precio %>"
+                data-categoria="<%= p.categoria %>"
+                data-activo="<%= p.activo %>">
+                Editar
+              </button>
+
+              <a href="/admin/eliminar/<%= p.id %>" 
+                 class="btn btn-danger btn-sm w-100">
+                Eliminar
+              </a>
+
+            </div>
+
+            <a href="/admin/toggle/<%= p.id %>"
+               class="btn btn-outline-light btn-sm w-100 mt-2">
+               Activar / Desactivar
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    <% }) %>
+
+  </div>
+</div>
+
+<!-- MODAL AGREGAR -->
+<div class="modal fade" id="modalAgregar">
+  <div class="modal-dialog">
+    <div class="modal-content glass">
+
+      <form action="/admin/agregar" method="POST" enctype="multipart/form-data">
+
+        <div class="modal-header">
+          <h5>Agregar producto</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <input name="nombre" class="form-control mb-2" placeholder="Nombre" required>
+          <input name="precio" type="number" class="form-control mb-2" placeholder="Precio" required>
+          <input name="categoria" class="form-control mb-2" placeholder="Categoría">
+
+          <input type="file" name="imagen" class="form-control">
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success">Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR -->
+<div class="modal fade" id="modalEditar">
+  <div class="modal-dialog">
+    <div class="modal-content glass">
+
+      <form id="formEditar" method="POST">
+
+        <div class="modal-header">
+          <h5>Editar producto</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <input id="editNombre" name="nombre" class="form-control mb-2">
+          <input id="editPrecio" name="precio" type="number" class="form-control mb-2">
+          <input id="editCategoria" name="categoria" class="form-control mb-2">
+
+          <div class="form-check">
+            <input id="editActivo" type="checkbox" class="form-check-input">
+            <label class="form-check-label">Activo</label>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary">Guardar</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/admin.js"></script>
 
 </body>
 </html>
